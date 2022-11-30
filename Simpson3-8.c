@@ -1,7 +1,10 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-float f (float x) { return 1 / (1 + x*x) ; }
+float f (float x)
+{
+    return 1 / (1 + x * x);
+}
 
 void simpson38()
 {
