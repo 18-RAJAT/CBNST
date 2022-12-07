@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<math.h>
-float f(float x,float y);
 float f(float x,float y)
 {
     float m;
