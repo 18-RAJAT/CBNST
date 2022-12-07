@@ -19,11 +19,11 @@ void simpson18()
 	}
 }
 
+/*input
+0 1 10
+*/
+
 int main()
 {
     simpson18();
 }
-
-/*input
-0 1 10
-*/
