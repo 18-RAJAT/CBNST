@@ -1,5 +1,5 @@
 #include<stdio.h>
-float fun(float x,float y)
+float resolve(float x,float y)
 {
     float f;
     f=x+y;
@@ -18,7 +18,7 @@ int main()
     printf("\n  x\t  y\n");
     while(x<=t)
     {
-        k=h*fun(x,y);
+        k=h*resolve(x,y);
         y=y+k;
         x=x+h;
         printf("%0.3f\t%0.3f\n",x,y);
