@@ -14,7 +14,7 @@ int main()
     printf("Enter the y0: ");scanf("%f",&y0);
     printf("Enter the xn: ");scanf("%f",&xn);
     printf("Enter the h: ");scanf("%f",&h);
-    
+
     x=x0;
     y=y0;
     printf("\n\nX\t\tY\n");
