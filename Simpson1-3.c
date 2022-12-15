@@ -1,29 +1,39 @@
 #include<stdio.h>
 #include<stdlib.h>
-float f (float x) { return 4*x - 3*x*x ; }
-void simpson18()
-{
-    int i, n;
-	float a, b, h, s, odd = 0, even = 0;
-	printf("Enter values of lower limit, upper limit and no. of intervals:\n");
-	scanf("%f%f%d", &a, &b, &n);
-	h = (b-a)/n;
-	if (n % 2 != 0) printf("Simpson's 1/3 Rule is not applicable.\n");
-	else {
-		for (i = 1; i <= n-1; i++) {
-			if (i % 2 == 0) even += f(a + i*h);
-			else odd += f(a + i*h);
-		}
-		s = (h / 3) * (f(a) + f(b) + 2*even + 4*odd);
-		printf("Integral = %f\n", s);
-	}
-}
+#include<math.h>
 
-/*input
-0 1 10
-*/
-
+#define f(x) 1/(1+pow(x,2))
 int main()
 {
-    simpson18();
+	float lower,upper,integration=0.0,size,temp;
+	
+	int interval;
+	
+	printf("Enter the lower integration: ");
+	scanf("%f",&lower);
+	
+	printf("Enter the upper integration: ");
+	scanf("%f",&upper);
+	
+	printf("Enter the interval: ");
+	scanf("%d",&interval);
+	
+	size=(upper-lower)/interval;
+	
+	integration=f(lower)+f(upper);
+	
+	for(int i=1;i<=interval-1;++i)
+	{
+		temp=lower+i*size;
+		if(i%2==0)
+		{
+			integration+=2*f(temp);
+		}
+		else
+		{
+			integration+=4*f(temp);
+		}
+	}
+	integration*=size/3;
+	printf("Value Required is: %.3f",integration);
 }
