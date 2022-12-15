@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<math.h>
 
-#define f(x) 1/(1+pow(x,2));
+#define f(x) 1/(1+pow(x,2))
 int main()
 {
 	float lower,upper,integration=0.0,size,temp;
@@ -10,10 +10,10 @@ int main()
 	int interval;
 	
 	printf("Enter the lower integration: ");
-	scanf("%d",&lower);
+	scanf("%f",&lower);
 	
 	printf("Enter the upper integration: ");
-	scanf("%d",&upper);
+	scanf("%f",&upper);
 	
 	printf("Enter the interval: ");
 	scanf("%d",&interval);
@@ -25,9 +25,9 @@ int main()
 	for(int i=1;i<=interval-1;++i)
 	{
 		temp=lower+i*size;
-		integration=integration+2*f(temp);
+		integration+=2*f(temp);
 	}
-	integration=integration*size/2;
+	integration*=size/2;
 	
 	printf("Value Required is: %.3f",integration);
 }
