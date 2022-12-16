@@ -1,30 +1,37 @@
 #include<stdio.h>
 #include<stdlib.h>
-float f (float x) { return 4*x - 3*x*x ; }
-void simpson18()
-{
-    int i, n;
-	float a, b, h, s, odd = 0, even = 0;
-	printf("Enter values of lower limit, upper limit and no. of intervals:\n");
-	scanf("%f%f%d", &a, &b, &n);
-	h = (b-a)/n;
-	if (n % 2 != 0) printf("Simpson's 1/3 Rule is not applicable.\n");
-	else {
-		for (i = 1; i <= n-1; i++) {
-			if (i % 2 == 0) even += f(a + i*h);
-			else odd += f(a + i*h);
-		}
-		s = (h / 3) * (f(a) + f(b) + 2*even + 4*odd);
-		printf("Integral = %f\n", s);
-	}
-}
-
-/*input
-0 1 10
-*/
+#include<math.h>
 
 int main()
 {
-    simpson18();
-}
+	float x[101],y[101],xp=0,yp=0,point;
+	int n;
 
+	printf("Enter the number of points: ");
+	scanf("%d",&n);
+
+	printf("Enter the values of x and y: ");
+
+	for(int i=1;i<=n;++i)
+	{
+		printf("x[%d]= ",i);
+		scanf("%f",&x[i]);
+
+		printf("y[%d]= ",i);
+		scanf("%f",&y[i]);
+	}
+	for(int i=1;i<n;++i)
+	{
+		point=1;
+
+		for(int j=1;j<=n;++j)
+		{
+			if(i!=j)
+			{
+				p*=(xp-x[j])/(x[i]-x[j]);
+			}
+		}
+		yp+=p*y[i];
+	}
+	printf("The value of y at %f is %f",xp,yp);
+}

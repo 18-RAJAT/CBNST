@@ -1,34 +1,40 @@
 #include<stdio.h>
-#include<conio.h>
+#include<stdlib.h>
+#include<math.h>
 
-void main()
+int main()
 {
-	 float x[100], y[100], xp, yp=0, p;
-	 int i,j,n;
-	 printf("Enter number of data: ");
-	 scanf("%d", &n);
-	 printf("Enter data:\n");
-	 for(i=1;i<=n;i++)
-	 {
-		  printf("x[%d] = ", i);
-		  scanf("%f", &x[i]);
-		  printf("y[%d] = ", i);
-		  scanf("%f", &y[i]);
-	 }
-	 printf("Enter interpolation point: ");
-	 scanf("%f", &xp);
-	 for(i=1;i<=n;i++)
-	 {
-		  p=1;
-		  for(j=1;j<=n;j++)
-		  {
-			   if(i!=j)
-			   {
-			    	p = p* (xp - x[j])/(x[i] - x[j]);
-			   }
-		  }
-		  yp = yp + p * y[i];
-	 }
-	 printf("Interpolated value at %.3f is %.3f.", xp, yp);
-	 getch();
+	float x[101],y[101],xp,yp=0,point;
+	int n;
+
+	printf("Enter the number of points: \n");
+	scanf("%d",&n);
+
+	printf("Enter the values of x and y: \n");
+
+	for(int i=1;i<=n;++i)
+	{
+		printf("x[%d]= ",i);
+		scanf("%f",&x[i]);
+
+		printf("y[%d]= ",i);
+		scanf("%f",&y[i]);
+	}
+	printf("Enter the interpolation point: ");
+	scanf("%f",&xp);
+
+	for(int i=1;i<n;++i)
+	{
+		point=1;
+
+		for(int j=1;j<=n;++j)
+		{
+			if(i!=j)
+			{
+				point*=(xp-x[j])/(x[i]-x[j]);
+			}
+		}
+		yp+=point*y[i];
+	}
+	printf("The value of y at %.3f is %.3f",xp,yp);
 }
