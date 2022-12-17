@@ -2,42 +2,41 @@
 #include<stdlib.h>
 #include<math.h>
 
+float f(float x,float y)
+{
+	float temp;
+	return temp=x+y;
+}
 
 int main()
 {
-	int n;
-	float a[10],b[10][10];
+	printf("***********************************************************");printf("\n");
+    printf("***********************************************************");printf("\n");
+    printf("*                   Euler Method                          *");printf("\n");
+    printf("***********************************************************");printf("\n");
+    printf("***********************************************************");printf("\n");
+	float a,b,x,y,h,t,k;
+	printf("Enter the x0: ");
+	scanf("%f",&a);
 	
-	printf("Enter the number: ");
-	scanf("%d",&n);
+	printf("Enter the y0: ");
+	scanf("%f",&b);
 	
-	printf("Enter the data: ");
-	for(int i=0;i<n;++i)
+	printf("Enter the h: ");
+	scanf("%f",&h);
+	
+	printf("Enter the xn: ");
+	scanf("%f",&t);
+	
+	x=a;
+	y=b;
+	
+	while(x<=t)
 	{
-		printf("a[%d]= ",i);
-		scanf("%f",&a[i]);
+		k=h*f(x,y);
+		x+=h;
+		y+=k;
 		
-		printf("b[%d]= ",i);
-		scanf("%f",&b[i][0]);
+		printf("The Values are: %0.3f\t%0.3f\n ",x,y);
 	}
-	
-	for(int i=0;i<n;++i)
-	{
-		for(int j=0;j<n-i;--j)
-		{
-			b[j][i]=b[i+1][i-1]-b[j][i-1];
-		}
-	}
-	printf("Difference Table\n");
-    for(int i=0;i<n;++i)
-    {
-        printf("\t %.3f",a[i]);
-
-        for(int j=0;j<=i;++j)
-        {
-            printf("\t %.3f",b[i][j]);
-        }
-        printf("\n");
-    }
-    return 0;
 }
