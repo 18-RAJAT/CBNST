@@ -1,42 +1,51 @@
 #include<stdio.h>
-#include<stdlib.h>
 #include<math.h>
+#include<stdlib.h>
 
-float f(float x,float y)
+float resolve(float x)
 {
-	float temp;
-	return temp=x+y;
+    float temp;
+    temp=1/(1+x*x);
+
+    return temp;
 }
 
-int main()
+void  main()
 {
-	printf("***********************************************************");printf("\n");
-    printf("***********************************************************");printf("\n");
-    printf("*                   Euler Method                          *");printf("\n");
     printf("***********************************************************");printf("\n");
     printf("***********************************************************");printf("\n");
-	float a,b,x,y,h,t,k;
-	printf("Enter the x0: ");
-	scanf("%f",&a);
-	
-	printf("Enter the y0: ");
-	scanf("%f",&b);
-	
-	printf("Enter the h: ");
-	scanf("%f",&h);
-	
-	printf("Enter the xn: ");
-	scanf("%f",&t);
-	
-	x=a;
-	y=b;
-	
-	while(x<=t)
-	{
-		k=h*f(x,y);
-		x+=h;
-		y+=k;
-		
-		printf("The Values are: %0.3f\t%0.3f\n ",x,y);
-	}
+    printf("*              		Weddle's rule                         *");printf("\n");
+    printf("***********************************************************");printf("\n");
+    printf("***********************************************************");printf("\n");
+    float a,b,s,s1,s2,res;
+    s=s1=s2=0;
+
+    int n,m;
+    printf("Enter the upper limit= ");
+    scanf("%f",&b);
+
+    printf("Enter the lower limit= ");
+    scanf("%f",&a);
+
+    printf("Enter the value of n= ");
+    scanf("%d",&n);
+
+    res=(b-a)/n;
+    printf("res= %f",res);
+
+    m=n/6;
+    s=0;
+
+    if(n%6==0)
+    {
+        for(int i=1;i<=m;++i)
+        {
+            s=s+((3*res/10)*(resolve(a)+resolve(a+2*res)+5*resolve(a+res)+6*resolve(a+3*res)+resolve(a+4*res)+5*resolve(a+5*res)+resolve(a+6*res)));
+        }
+        printf("Result is : %f",s);
+    }
+    else
+    {
+        printf("Weddle's rule is not applicable");
+    }
 }
