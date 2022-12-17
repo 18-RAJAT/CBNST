@@ -2,9 +2,9 @@
 #include<stdlib.h>
 #include<math.h>
 
-#define f1(x,y,z)  (x-y+2*z)/20
-#define f2(x,y,z)  (3*x+y+z)/20
-#define f3(x,y,z)  (2*x+2*y+3*z)/20
+#define f1(x,y,z)  (17+y+2*z)/10
+#define f2(x,y,z)  (21-3*x+z)/10
+#define f3(x,y,z)  (91-2*x+3*y)/10
 
 int main()
 {
