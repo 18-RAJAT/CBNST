@@ -11,7 +11,7 @@ int main()
 	printf("Enter the number: ");
 	scanf("%d",&n);
 	
-	printf("Enter the data: ");
+	printf("Enter the data: \n");
 	for(int i=0;i<n;++i)
 	{
 		printf("a[%d]= ",i);
@@ -21,19 +21,19 @@ int main()
 		scanf("%f",&b[i][0]);
 	}
 	
-	for(int i=0;i<n;++i)
+	for(int i=1;i<n;++i)
 	{
-		for(int j=0;j<n-i;--j)
-		{
-			b[j][i]=b[i+1][i-1]-b[j][i-1];
-		}
+	    for(int j=0;j<n-i;++j)
+	    {
+	        b[j][i]=b[j+1][i-1]-b[j][i-1];
+	    }
 	}
 	printf("Difference Table\n");
     for(int i=0;i<n;++i)
     {
         printf("\t %.3f",a[i]);
 
-        for(int j=0;j<=i;++j)
+        for(int j=0;j<n-i;++j)
         {
             printf("\t %.3f",b[i][j]);
         }
