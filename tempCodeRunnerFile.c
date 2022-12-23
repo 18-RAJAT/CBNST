@@ -1,39 +1,76 @@
 #include<stdio.h>
-#include<stdlib.h>
+#include<conio.h>
 #include<math.h>
+#include<stdlib.h>
 
-#define f1(x,y,z)  (17+y+2*z)/10
-#define f2(x,y,z)  (21-3*x+z)/10
-#define f3(x,y,z)  (91-2*x+3*y)/10
+#define  SIZE  101
 
 int main()
 {
-	int ct=1;
-    float x0=0,y0=0,z0=0;
-    float x1,y1,z1;
-    float e,e1,e2,e3;
-    
-    printf("Enter the error: ");
-    scanf("%f",&e);
-    
-    printf("\nCount\tx\ty\tz\n");
-    do
-    {
-    	x1=f1(x0,y0,z0);
-    	y1=f2(x1,y0,z0);
-    	z1=f3(x1,y1,z0);
-    	
-    	printf("%d\t%0.4f\t%0.4f\t%0.4f\n",ct,x1,y1,z1);
-    	
-    	e1=fabs(x0-x1);
-    	e2=fabs(y0-y1);
-    	e3=fabs(z0-z1);
-    	
-    	ct++;
-    	x0=x1;
-    	y0=y1;
-    	z0=z1;
-    }
-    while(e1>e && e2>e && e3>e);
-    printf("\nAnswer: x=%0.3f, y=%0.3f and z = %0.3f\n",x1,y1,z1);
+	printf("***********************************************************");printf("\n");
+    printf("***********************************************************");printf("\n");
+    printf("*              Gauss Elimination                          *");printf("\n");
+    printf("***********************************************************");printf("\n");
+    printf("***********************************************************");printf("\n");
+	 float a[SIZE][SIZE],x[SIZE], ratio;
+	 int i,j,k,n;
+	
+	 printf("Enter number of unknowns: ");
+	 scanf("%d", &n);
+	 
+	 for(i=1;i<=n;i++)
+	 {
+		  for(j=1;j<=n+1;j++)
+		  {
+			   printf("a[%d][%d] = ",i,j);
+			   scanf("%f", &a[i][j]);
+		  }
+	 }
+	
+	 for(i=1;i<=n-1;i++)
+	 {
+		  if(a[i][i] == 0.0)
+		  {
+			   printf("Mathematical Error!");
+			   exit(0);
+		  }
+		  for(j=i+1;j<=n;j++)
+		  {
+			   ratio = a[j][i]/a[i][i];
+			   
+			   for(k=1;k<=n+1;k++)
+			   {
+			  		a[j][k] = a[j][k] - ratio*a[i][k];
+			   }
+		  }
+	 }
+	 
+	 x[n] = a[n][n+1]/a[n][n];
+	
+	 for(i=n-1;i>=1;i--)
+	 {
+		  x[i] = a[i][n+1];
+		  for(j=i+1;j<=n;j++)
+		  {
+		  		x[i] = x[i] - a[i][j]*x[j];
+		  }
+		  x[i] = x[i]/a[i][i];
+	 }
+
+	 printf("\n Gauss Elimination:\n");
+	 for(i=1;i<=n;i++)
+	 {
+	  	printf("x[%d] = %0.3f\n",i, x[i]);
+	 }
+	 getch();
 }
+
+// int main()
+// {
+//      int tc = 1;
+//     scanf("%d", &tc);
+//     for (int t = 1; t <= tc; t++) {
+//         solve();
+//     }
+//     return 0;
+// }
