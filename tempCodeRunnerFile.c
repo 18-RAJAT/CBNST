@@ -1,76 +1,50 @@
 #include<stdio.h>
-#include<conio.h>
 #include<math.h>
-#include<stdlib.h>
-
-#define  SIZE  101
 
 int main()
 {
-	printf("***********************************************************");printf("\n");
-    printf("***********************************************************");printf("\n");
-    printf("*              Gauss Elimination                          *");printf("\n");
-    printf("***********************************************************");printf("\n");
-    printf("***********************************************************");printf("\n");
-	 float a[SIZE][SIZE],x[SIZE], ratio;
-	 int i,j,k,n;
-	
-	 printf("Enter number of unknowns: ");
-	 scanf("%d", &n);
-	 
-	 for(i=1;i<=n;i++)
-	 {
-		  for(j=1;j<=n+1;j++)
-		  {
-			   printf("a[%d][%d] = ",i,j);
-			   scanf("%f", &a[i][j]);
-		  }
-	 }
-	
-	 for(i=1;i<=n-1;i++)
-	 {
-		  if(a[i][i] == 0.0)
-		  {
-			   printf("Mathematical Error!");
-			   exit(0);
-		  }
-		  for(j=i+1;j<=n;j++)
-		  {
-			   ratio = a[j][i]/a[i][i];
-			   
-			   for(k=1;k<=n+1;k++)
-			   {
-			  		a[j][k] = a[j][k] - ratio*a[i][k];
-			   }
-		  }
-	 }
-	 
-	 x[n] = a[n][n+1]/a[n][n];
-	
-	 for(i=n-1;i>=1;i--)
-	 {
-		  x[i] = a[i][n+1];
-		  for(j=i+1;j<=n;j++)
-		  {
-		  		x[i] = x[i] - a[i][j]*x[j];
-		  }
-		  x[i] = x[i]/a[i][i];
-	 }
+    float x,u1,u,y;
+    int i,j,n,fact;
+    printf("Enter no. of terms\n");
+    scanf("%d",&n);
+    float a[n][n+1];
+    printf("Enter Values of X \n");
+    for(i=0;i<n;i++)
+          scanf("%f",&a[i][0]);
+    printf("Enter Values of Y\n");
+    for(i=0;i<n;i++)
+          scanf("%f",&a[i][1]);
+          
+    printf("Enter value of x for which you want y\n");
+    scanf("%f",&x);
 
-	 printf("\n Gauss Elimination:\n");
-	 for(i=1;i<=n;i++)
-	 {
-	  	printf("x[%d] = %0.3f\n",i, x[i]);
-	 }
-	 getch();
+    for(j=2;j<n+1;j++)
+    {
+        for(i=0;i<n-j+1;i++)
+            a[i][j] = a[i+1][j-1]-a[i][j-1];
+    }
+
+    printf("The Difference Table is as follows:\n");
+    for(i=0;i<n;i++)
+    {
+     for(j=0;j<=n-i;j++)
+        printf("%f ",a[i][j]);
+     printf("\n");
+    }
+    
+    u= (x - a[n-1][0])/(a[1][0]-a[0][0]);
+    y=a[n-1][1]; 
+    
+    u1=u;
+    fact=1;
+    j=2;
+    for(i=n-2;i>=0;i--)
+    {
+        y=y+(u1*a[i][j])/fact;
+        
+        fact=fact*j; 
+        u1=u1*(u+(j-1));
+        j++;
+    }
+    printf("\n\nValue at X=%g is = %f", x,y);
 }
-
-// int main()
-// {
-//      int tc = 1;
-//     scanf("%d", &tc);
-//     for (int t = 1; t <= tc; t++) {
-//         solve();
-//     }
-//     return 0;
-// }
