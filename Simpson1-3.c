@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<math.h>
 
-#define f(x) 1/(1+pow(x,2))
+#define f(x) (x*x)
 int main()
 {
 

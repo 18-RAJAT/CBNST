@@ -46,3 +46,4 @@ int main()
     }
     printf("\nValue of y at x = %0.2f is %0.3f",xn, yn);
 }
+//pd code
