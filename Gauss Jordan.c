@@ -2,11 +2,9 @@
 #include<conio.h>
 #include<math.h>
 
-#define SIZE 10
-
 int main()
 {
-		 float a[SIZE][SIZE], x[SIZE], ratio;
+		 float a[10][10], x[10], ratio;
 		 int i,j,k,n;
 		 clrscr();
 		 /* Inputs */
